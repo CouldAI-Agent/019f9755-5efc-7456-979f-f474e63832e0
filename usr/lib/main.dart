@@ -13,8 +13,8 @@ class ArvagriApp extends StatelessWidget {
       title: 'Arvagri',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF8F9FA), // Soft Slate Light
-        primaryColor: const Color(0xFF0052FF), // Tech Blue
+        scaffoldBackgroundColor: const Color(0xFFF8F9FA),
+        primaryColor: const Color(0xFF0052FF),
         fontFamily: 'Roboto',
       ),
       home: const LoginOnboardingScreen(),
@@ -31,16 +31,15 @@ class LoginOnboardingScreen extends StatefulWidget {
 
 class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
   final _formKey = GlobalKey<FormState>();
-  
+
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isObscure = true;
-  bool _isLoginTab = true; // Toggle between Login and Register
+  bool _isLoginTab = true;
 
-  // Arvagri Design Colors
   final Color techBlue = const Color(0xFF0052FF);
   final Color leafGreen = const Color(0xFF00A859);
   final Color bgLight = const Color(0xFFF8F9FA);
@@ -79,7 +78,6 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // App Logo & Header
                   Icon(
                     Icons.eco_rounded,
                     size: 72,
@@ -107,7 +105,7 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 32),
 
-                  // Login / Register Tab Selector
+                  // Tab Selector
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
@@ -160,7 +158,6 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Full Name Field (Only for Registration)
                   if (!_isLoginTab) ...[
                     TextFormField(
                       controller: _fullNameController,
@@ -183,7 +180,6 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                     const SizedBox(height: 16),
                   ],
 
-                  // Phone Number Field (with +251 Country Code)
                   TextFormField(
                     controller: _phoneController,
                     keyboardType: TextInputType.phone,
@@ -217,7 +213,6 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Email Field
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -239,7 +234,6 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Password Field
                   TextFormField(
                     controller: _passwordController,
                     obscureText: _isObscure,
@@ -265,10 +259,10 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Submit Button
+                  // Submit Button (በእውነተኛው የተስተካከለ styleFrom)
                   ElevatedButton(
                     onPressed: _submitForm,
-                    style: ElevatedButton.styleButtonFrom(
+                    style: ElevatedButton.styleFrom(
                       backgroundColor: techBlue,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -287,21 +281,21 @@ class _LoginOnboardingScreenState extends State<LoginOnboardingScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Divider
                   Row(
                     children: [
                       Expanded(child: Divider(color: Colors.grey[400])),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        style: TextStyle(color: Colors.grey[600]),
-                        child: const Text('OR'),
+                        child: Text(
+                          'OR',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
                       ),
                       Expanded(child: Divider(color: Colors.grey[400])),
                     ],
                   ),
                   const SizedBox(height: 16),
 
-                  // Google Sign-In Button
                   OutlinedButton.icon(
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
